@@ -1,22 +1,16 @@
 <?php
-function export_coll($db)
+function export_coll($db,$name)
 {
-	$list=$db->listCollections();
-	foreach ($list as $collection) 
-	{
-		echo "<p>" . $collection . "</p>";
-	}
-	return $list;
+	$collection=$db->conectCollections($name);
+	return $collection;
 }
 
-function export_data($collection)
+function export_data($collection,$name)
 {
 	$list = $collection->find();
 	while($document = $list->getNext())
 	{
-		echo "<p> Name:" . $document["name"] . "</br>";
-		echo "Age:" . $document["age"] . "</p>";
+		if($document["name"]==$name) return $document;
 	}
-	return $list;
 }
 ?>
