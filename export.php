@@ -1,7 +1,7 @@
 <?php
 function export_coll($db,$name)
 {
-	$collection=$db->conectCollections($name);
+	$collection=$db->getCollection($name);
 	return $collection;
 }
 
